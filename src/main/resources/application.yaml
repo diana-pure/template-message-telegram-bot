@@ -1,3 +1,7 @@
 spring:
   application:
     name: template-message-telegram-bot
+
+telegram:
+  auth:
+    token: ${TELEGRAM_AUTH_TOKEN}
