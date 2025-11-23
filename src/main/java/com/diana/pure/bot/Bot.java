@@ -1,5 +1,6 @@
 package com.diana.pure.bot;
 
+import com.diana.pure.config.TelegramAuthProperties;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -9,6 +10,12 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 @Component
 public class Bot extends TelegramLongPollingBot {
 
+    private final TelegramAuthProperties telegramAuthProperties;
+
+    public Bot(TelegramAuthProperties telegramAuthProperties) {
+        this.telegramAuthProperties = telegramAuthProperties;
+    }
+
     @Override
     public String getBotUsername() {
         return "Template Message Bot";
@@ -16,7 +23,7 @@ public class Bot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return "";
+        return telegramAuthProperties.getToken();
     }
 
     @Override
